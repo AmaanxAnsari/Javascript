@@ -86,6 +86,16 @@
 // 7. **Splitting a Sentence**
 //    Write a function that takes a sentence as input and splits it into an array of words using the appropriate string method.
 //  Remove any extra spaces in between words.
+// function splitSentence(sentence) {
+//   let words = sentence.split(" ");
+
+//   let filteredWords = words.filter((word) => word !== "");
+
+//   return filteredWords;
+// }
+
+// let sentence = "  Javascript   is  a   dynamically typed   language  ";
+// console.log(splitSentence(sentence));
 
 // 8. **Checking for a Substring**
 //    Given a string and a substring, write a function to check if the substring is present in the string.
@@ -102,7 +112,23 @@
 // 9. **String Padding**
 //    Write a function that pads a given string on both sides with a specific character to a specified length.
 //   Which string method would you use to achieve this?
+// function strPadding(padLength, padChar) {
+//   let str = "Javascript is the best language!";
+//   let result = str.padStart(padLength, padChar);
+//   return result;
+// }
+
+// let padLength = 40; // Total length of the string after padding
+// let padChar = "A"; // Character to pad with
+// console.log(strPadding(padLength, padChar));
 
 // 10. **Trimming a String**
 //     Given a string that might contain extra whitespace at the beginning and end,
 //  write a function that removes any such spaces and returns the trimmed string.
+
+// function strTrimmer(str) {
+//   let result = str.trim();
+//   return result;
+// }
+// let str = "   javascript is a powerful language   ";
+// console.log(strTrimmer(str));
