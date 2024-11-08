@@ -4054,3 +4054,76 @@ introduceDavid("!"); // Output: Good evening, I am David!
 ## Conclusion
 
 Understanding how to use `call`, `apply`, and `bind` is essential for managing function contexts in JavaScript. They provide powerful ways to control how functions are invoked and with what data, allowing for more flexible and reusable code.
+
+
+In JavaScript, the concepts of **shallow copy** and **deep copy** refer to how objects are duplicated and how they handle references to nested objects.
+
+### Shallow Copy
+
+A **shallow copy** creates a new object but does not create copies of nested objects. Instead, it copies references to those nested objects. As a result, changes to nested objects in the copied object will affect the original object and vice versa.
+
+**Example of Shallow Copy:**
+
+```javascript
+const original = {
+    name: "Alice",
+    age: 25,
+    address: {
+        city: "Wonderland",
+        zip: "12345"
+    }
+};
+
+// Create a shallow copy using Object.assign
+const shallowCopy = Object.assign({}, original);
+
+// Create another shallow copy using spread operator
+const shallowCopy2 = { ...original };
+
+// Modify the nested object in the shallow copy
+shallowCopy.address.city = "New City";
+
+console.log(original.address.city); // Output: "New City"
+console.log(shallowCopy.address.city); // Output: "New City"
+```
+
+In this example, changing the city in `shallowCopy` also affects `original`, demonstrating that they share the same reference to the nested `address` object.
+
+### Deep Copy
+
+A **deep copy** creates a new object and recursively copies all nested objects, ensuring that there are no shared references between the original and the copied object. Changes made to nested objects in the deep copy do not affect the original object.
+
+**Example of Deep Copy:**
+
+To create a deep copy, you can use methods like `JSON.parse` and `JSON.stringify`, or libraries like Lodash.
+
+**Using JSON methods:**
+
+```javascript
+const original = {
+    name: "Alice",
+    age: 25,
+    address: {
+        city: "Wonderland",
+        zip: "12345"
+    }
+};
+
+// Create a deep copy using JSON methods
+const deepCopy = JSON.parse(JSON.stringify(original));
+
+// Modify the nested object in the deep copy
+deepCopy.address.city = "New City";
+
+console.log(original.address.city); // Output: "Wonderland"
+console.log(deepCopy.address.city); // Output: "New City"
+```
+
+In this example, changing the city in `deepCopy` does not affect `original`, indicating that they are completely independent objects.
+
+### Summary
+
+- **Shallow Copy**: Copies an object and its first-level properties. Nested objects are shared references.
+- **Deep Copy**: Recursively copies all objects, creating independent copies of nested objects.
+
+Using shallow and deep copies appropriately is essential for managing object states in JavaScript, especially when working with complex data structures.
